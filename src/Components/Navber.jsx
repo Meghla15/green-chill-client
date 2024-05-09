@@ -33,7 +33,7 @@ const Navbar = () => {
               {links}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end space-x-2">
          
         {/* {user ? ( */}
           <div className="dropdown dropdown-left flex">
@@ -43,7 +43,7 @@ const Navbar = () => {
                   alt=''
                   src={
                     // user?.photoURL ||
-                    "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    "https://cdn-icons-png.freepik.com/256/709/709699.png?semt=ais_hybrid"
                   }
                 />
                 
@@ -62,7 +62,7 @@ const Navbar = () => {
               
               <button
             //   onClick={logout}
-              className="btn btn-primary font-acme font-bold"
+              className="btn btn-primary font-sans font-semibold"
             >
               Logout
             </button>

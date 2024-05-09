@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import AllFoods from "../Pages/AllFoods/AllFoods";
 import Gallery from "../Pages/Gallery/Gallery";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Login from "../Pages/Login";
 
 
 const route = createBrowserRouter([
@@ -19,6 +20,14 @@ const route = createBrowserRouter([
             {
                 path: '/allFoods',
                 element: <AllFoods></AllFoods>
+            },
+            {
+                path: '/gallery',
+                element: <Gallery></Gallery>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             },
             {
                 path: '/gallery',
