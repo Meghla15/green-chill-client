@@ -1,9 +1,16 @@
-import React from 'react';
+
+import { useEffect } from 'react';
+import Carousel from '../../Components/Carousel';
+import TopFoodSection from '../../Components/TopFoodSection/TopFoodSection';
 
 const Home = () => {
+    useEffect (() =>{
+        document.title ='Green Chilli | Home'
+    },[])
     return (
-        <div>
-            <h1 className='text-6xl'>this is home</h1>
+        <div className='space-y-32 container mx-auto'>
+            <Carousel></Carousel>
+            <TopFoodSection></TopFoodSection>
         </div>
     );
 };

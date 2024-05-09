@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const Navbar = () => {
     const links = (
@@ -9,6 +9,10 @@ const Navbar = () => {
         <li className="font-semibold">
             <NavLink to="/allFoods">All Foods</NavLink>
           </li>
+        <li className="font-semibold">
+            <NavLink to="/gallery">Gallery</NavLink>
+          </li>
+       
         </>
     )
     return (
@@ -30,7 +34,50 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+         
+        {/* {user ? ( */}
+          <div className="dropdown dropdown-left flex">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  alt=''
+                  src={
+                    // user?.photoURL ||
+                    "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  }
+                />
+                
+              </div>
+            </label>
+
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <p className="font-neon ">
+                  {/* {user.displayName ||"Name Not Founded"} */}
+                </p>
+              </li>
+              
+              <button
+            //   onClick={logout}
+              className="btn btn-primary font-acme font-bold"
+            >
+              Logout
+            </button>
+              
+            </ul>
+             
+           
+          </div>
+        {/* ) : ( */}
+          <Link to="/login">
+            <button className="btn btn-primary font-neon font-bold">
+              Login
+            </button>
+          </Link>
+        {/* )} */}
         </div>
       </div>
     )

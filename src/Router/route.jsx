@@ -2,12 +2,15 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root/Root";
 import Home from "../Pages/Home/Home";
 import AllFoods from "../Pages/AllFoods/AllFoods";
+import Gallery from "../Pages/Gallery/Gallery";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const route = createBrowserRouter([
     {
         path: '/',
         element:<Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path: '/',
@@ -16,7 +19,11 @@ const route = createBrowserRouter([
             {
                 path: '/allFoods',
                 element: <AllFoods></AllFoods>
-            }
+            },
+            {
+                path: '/gallery',
+                element: <Gallery></Gallery>
+            },
         ]
     },
 ])
