@@ -26,7 +26,8 @@ const Navbar = () => {
              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Green Chilli</a>
+          <img className="w-[10%] h-[10%]" src="https://png.pngtree.com/png-clipart/20230428/ourmid/pngtree-free-vector-red-chili-pepper-realistic-single-object-on-blank-white-png-image_6741302.png" alt="" />
+         <p className="text-2xl font-sans font-semibold">Green Chilli</p>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
