@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom"
+import UseAuth from "../Hooks/UseAuth";
 
 const Navbar = () => {
+  const { logout, user } = UseAuth();
+  console.log(user)
     const links = (
         <>
         <li className="font-semibold">
@@ -16,7 +19,8 @@ const Navbar = () => {
         </>
     )
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-gray-200 px-4">
+
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,50 +39,30 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end space-x-2">
-         
-        {/* {user ? ( */}
-          <div className="dropdown dropdown-left flex">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  alt=''
-                  src={
-                    // user?.photoURL ||
-                    "https://cdn-icons-png.freepik.com/256/709/709699.png?semt=ais_hybrid"
-                  }
-                />
-                
-              </div>
-            </label>
-
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <p className="font-neon ">
-                  {/* {user.displayName ||"Name Not Founded"} */}
-                </p>
-              </li>
-              
-              <button
-            //   onClick={logout}
-              className="btn btn-primary font-sans font-semibold"
-            >
-              Logout
-            </button>
-              
-            </ul>
-             
-           
+        {
+          user?(<div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img alt="" src={user?.photoURL || 'https://cdn-icons-png.freepik.com/256/709/709699.png?semt=ais_hybrid'} />
+            </div>
           </div>
-        {/* ) : ( */}
-          <Link to="/login">
-            <button className="btn btn-primary font-neon font-bold">
+          <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+          <li><p>{user.displayName ||"Name not founded"}</p></li>
+            <li><a href="">My Added Food Item</a></li>
+            <li><a href="">Add a Food Item</a></li>
+            <li><a href="">My Ordered Food</a></li>
+            <li><button onClick={logout}>Logout</button></li>
+          </ul>
+        </div>):(<Link to="/login">
+            <button className=" p-4 text-center  rounded-2xl bg-orange-600 text-white font-semibold text-xm mx-auto">
               Login
             </button>
-          </Link>
-        {/* )} */}
+          </Link>)}
+        
+         
+        
+          
+      
         </div>
       </div>
     )

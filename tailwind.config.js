@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        sans :'"Poetsen One", sans-serif;'
+        sans :'"Poetsen One", sans-serif;',
+        
       },
       keyframes: {
         rotate: {
@@ -16,7 +17,7 @@ export default {
         },
       },
       animation: {
-        rotate: 'rotate 15s linear infinite', 
+        rotate: 'rotate 20s linear infinite', 
       },
     },
   },

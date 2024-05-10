@@ -7,7 +7,7 @@ const Footer = () => {
           <div className='flex flex-col items-center text-center'>
             <div className='flex gap-2 items-center'>
               <img className='w-auto h-7' src='' alt='' />
-              <span>SoloSphere</span>
+              <span className="font-bold text-xl">Green Chilli</span>
             </div>
   
             <div className='flex flex-wrap justify-center mt-6 -mx-4'>
