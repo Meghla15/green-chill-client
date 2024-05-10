@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        sans :'"Poetsen One", sans-serif;',
+        sans :'"Pacifico", cursive',
+        
         
       },
       keyframes: {

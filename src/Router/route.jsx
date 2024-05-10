@@ -6,6 +6,7 @@ import Gallery from "../Pages/Gallery/Gallery";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import DetailPage from "../Pages/FoodDetailsPage/DetailPage";
 
 
 const route = createBrowserRouter([
@@ -20,7 +21,8 @@ const route = createBrowserRouter([
             },
             {
                 path: '/allFoods',
-                element: <AllFoods></AllFoods>
+                element: <AllFoods></AllFoods>,
+                loader:() =>fetch (`${import.meta.env.VITE_API_URL}/foods`)
             },
             {
                 path: '/gallery',
@@ -33,6 +35,11 @@ const route = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/food/:id',
+                element: <DetailPage></DetailPage>,
+                loader:({params}) =>fetch (`${import.meta.env.VITE_API_URL}/food/${params.id}`)
             },
         ]
     },

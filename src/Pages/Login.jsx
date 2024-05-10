@@ -1,46 +1,45 @@
-
-import { useForm } from 'react-hook-form';
-import { Link,  useNavigate } from 'react-router-dom';
+import { Link, Navigate} from 'react-router-dom';
 import UseAuth from '../Hooks/UseAuth';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import SocialLogin from '../Components/SocialLogin/SocialLogin';
+import toast from 'react-hot-toast';
 
 const Login = () => {
 	const {signInUser} = UseAuth()
-	const navigate = useNavigate();
-	const from = "/";
+	
+	const onSubmit = async e =>{
+		e.preventDefault ()
+		const form = e.target
+        const email = form.email.value 
+		const password = form.password.value
+         
+		console.log({email, password})
 
-	const {register,handleSubmit,formState: { errors }} = useForm();
-
-	const onSubmit = data =>{
-         const {email, password} =data;
-         signInUser (email,password)
-         .then(result =>{
-            toast.success("Login Successfully")
-            navigate(from)
-            console.log(result)
-         })
-         .catch(error =>{
-            toast.error("Invalid Email or Password ")
-            console.log(error)
-         });
-
+		try{
+		const result = await signInUser(email, password)
+		console.log(result)
+		Navigate('/')
+		toast.success('SignIn Successfully')
+        
+	}catch(error){
+        console.log(error)
+		toast.error('Invalid email or password')
+		}
 	}
     
     return (
         <div className=''>
             <div className=" border  mx-auto mt-6 mb-16 w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-50 dark:text-gray-800">
-	<h1 className="text-3xl font-bold text-center">Login</h1>
-	<form onSubmit={handleSubmit(onSubmit)}  noValidate="" action="" className="space-y-6">
+	<h1 className="text-3xl font-bold font-sans text-center">Login</h1>
+	<form onSubmit={onSubmit}  noValidate="" action="" className="space-y-6">
 		<div className="space-y-1 text-sm">
 			<label htmlFor="Email" className="block dark:text-gray-600">Your Email</label>
-			<input {...register("email", { required: true })} type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
-			{errors.email && <span className='text-red-600'>This field is required</span>}
+			<input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+		
 		</div>
 		<div className="space-y-1 text-sm">
 			<label htmlFor="password" className="block dark:text-gray-600">Password</label>
-			<input {...register("password", { required: true })} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
-			{errors.password && <span className='text-red-600'>This field is required</span>}
+			<input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
 			<div className="flex justify-end text-xs dark:text-gray-600">
 				<a rel="noopener noreferrer" href="#">Forgot Password?</a>
 			</div>
