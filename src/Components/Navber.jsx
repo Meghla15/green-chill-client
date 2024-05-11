@@ -50,10 +50,10 @@ const Navbar = () => {
             </div>
           </div>
           <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-          <li><p>{user.displayName ||"Name not founded"}</p></li>
-            <li><a href="">My Added Food Item</a></li>
-            <li><a href="">Add a Food Item</a></li>
-            <li><a href="">My Ordered Food</a></li>
+          <li><p className="font-bold">{user.displayName ||"Name not founded"}</p></li>
+            <li><Link to='/myAddFood'>My Added Food Item</Link></li>
+            <li><Link to='/addedFood'>Add a Food Item</Link></li>
+            <li><Link to='/orderFood'>My Ordered Food</Link></li>
             <li><button onClick={logout}>Logout</button></li>
           </ul>
         </div>):(<Link to="/login">

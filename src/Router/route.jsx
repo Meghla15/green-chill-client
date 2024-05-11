@@ -8,6 +8,9 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import DetailPage from "../Pages/FoodDetailsPage/DetailPage";
 import PurchasePage from "../Pages/PurchasePage/PurchasePage";
+import AddedFood from "../Pages/AddedFoods/AddedFood";
+import MyAddFood from "../Pages/MyAddFoodPage/MyAddFood";
+import OrderFood from "../Pages/OrderedFoodPage/OrderFood";
 
 
 const route = createBrowserRouter([
@@ -36,6 +39,18 @@ const route = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addedFood',
+                element: <AddedFood></AddedFood>
+            },
+            {
+                path: '/myAddFood',
+                element: <MyAddFood></MyAddFood>
+            },
+            {
+                path: '/orderFood',
+                element: <OrderFood></OrderFood>
             },
             {
                 path: '/food/:id',
