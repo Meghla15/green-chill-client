@@ -1,4 +1,4 @@
-import { Link, Navigate} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import UseAuth from '../Hooks/UseAuth';
 // import toast from 'react-hot-toast';
 import SocialLogin from '../Components/SocialLogin/SocialLogin';
@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
 	const {signInUser} = UseAuth()
+	const navigate = useNavigate()
 	
 	const onSubmit = async e =>{
 		e.preventDefault ()
@@ -18,7 +19,7 @@ const Login = () => {
 		try{
 		const result = await signInUser(email, password)
 		console.log(result)
-		Navigate('/')
+		navigate('/')
 		toast.success('SignIn Successfully')
         
 	}catch(error){

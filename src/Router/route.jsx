@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import DetailPage from "../Pages/FoodDetailsPage/DetailPage";
+import PurchasePage from "../Pages/PurchasePage/PurchasePage";
 
 
 const route = createBrowserRouter([
@@ -39,6 +40,11 @@ const route = createBrowserRouter([
             {
                 path: '/food/:id',
                 element: <DetailPage></DetailPage>,
+                loader:({params}) =>fetch (`${import.meta.env.VITE_API_URL}/food/${params.id}`)
+            },
+            {
+                path: '/purchase/:id',
+                element: <PurchasePage></PurchasePage>,
                 loader:({params}) =>fetch (`${import.meta.env.VITE_API_URL}/food/${params.id}`)
             },
         ]
