@@ -1,26 +1,11 @@
-import { useEffect } from "react";
-import { RevealContent, Image, Reveal } from 'semantic-ui-react'
+import React from 'react';
 
 const Gallery = () => {
-    
-
-
-    useEffect (() =>{
-        document.title ='Green Chilli | Gallery'
-    },[])
-    return(
+    return (
         <div>
-           <Reveal animated='small fade'>
-    <RevealContent visible>
-      <Image src='https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/07/1296x728-header.jpg?w=1155&h=1528' size='small' />
-    </RevealContent>
-    <RevealContent hidden>
-      <p>this is tag</p>
-    </RevealContent>
-  </Reveal>
+            <h1>this is gallery page</h1>
         </div>
-    )
-   
+    );
 };
 
 export default Gallery;

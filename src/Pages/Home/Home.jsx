@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import TopFoodSection from '../../Components/TopFoodSection/TopFoodSection';
 import Banner from '../../Components/Banner';
 import AboutUs from '../../Components/AboutUsHome/AboutUs';
+import Testimonial from '../../Components/Testimonial/Testimonial';
 
 const Home = () => {
     useEffect (() =>{
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <TopFoodSection></TopFoodSection>
             <AboutUs></AboutUs>
+            <Testimonial></Testimonial>
         </div>
     );
 };
