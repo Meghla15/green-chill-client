@@ -12,7 +12,7 @@ const PurchasePage = () => {
     const navigate = useNavigate()
     const {user} = UseAuth()
     const food = useLoaderData()
-    const {food_name,price} = food || {};
+    const {food_name,price,photo} = food || {};
 
     const handlePurchase =async  e =>{
         e.preventDefault()
@@ -22,9 +22,10 @@ const PurchasePage = () => {
         const food_name = form.food_name.value;
         const price = parseFloat(form.price.value);
         const quantity = form.quantity.value;
+        const photo = form.photo.value;
         const date = startDate;
 
-        const purchaseFood = {name,email,food_name,price,quantity,date};
+        const purchaseFood = {name,email,food_name,price,quantity,photo,date};
         try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/purchase`, purchaseFood)
             console.log(data)
@@ -75,7 +76,7 @@ const PurchasePage = () => {
                 <input name="price" type="text" placeholder="Price" defaultValue={price} className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
             </div>
           
-            <div className="col-span-full sm:col-span-2">
+            <div className="col-span-full  sm:col-span-2">
                 <label className="text-xm font-semibold">Quantity</label>
                 <input name="quantity" type="number" placeholder="Quantity"
                 required className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
@@ -83,6 +84,12 @@ const PurchasePage = () => {
             <div className="col-span-full sm:col-span-2">
                 <label className="text-xm font-semibold">Buying Date</label>
                 <DatePicker className="w-full p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} />
+            </div>
+            <div className="col-span-full hidden  sm:col-span-2">
+                <label className="text-xm font-semibold">Photo</label>
+                <input defaultValue={photo}
+                 name="photo" type="text" placeholder="photo"
+                required className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
             </div>
             
         </div>
