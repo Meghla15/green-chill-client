@@ -22,7 +22,7 @@ const AddedFood = () => {
         const category = form.category.value;
         const food_origin = form.food_origin.value;
         const addedFood = {name,email,made_by,photo,food_name,description,price,quantity,category,food_origin}
-        console.log(addedFood)
+        // console.log(addedFood)
 		try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/food`, addedFood)
             console.log(data)

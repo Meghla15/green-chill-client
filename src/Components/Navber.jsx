@@ -3,7 +3,7 @@ import UseAuth from "../Hooks/UseAuth";
 
 const Navbar = () => {
   const { logout, user } = UseAuth();
-  console.log(user)
+  // console.log(user)
     const links = (
         <>
         <li className="font-semibold">
