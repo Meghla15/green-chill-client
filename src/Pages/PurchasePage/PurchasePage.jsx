@@ -19,12 +19,12 @@ const PurchasePage = () => {
         const form = e.target;
         const name = form.name.value
         const email = form.email.value;
-        const foodName = form.foodName.value;
+        const food_name = form.food_name.value;
         const price = parseFloat(form.price.value);
         const quantity = form.quantity.value;
         const date = startDate;
 
-        const purchaseFood = {name,email,foodName,price,quantity,date};
+        const purchaseFood = {name,email,food_name,price,quantity,date};
         try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/purchase`, purchaseFood)
             console.log(data)
@@ -67,7 +67,7 @@ const PurchasePage = () => {
            
             <div className="col-span-full sm:col-span-2">
                 <label  className="text-sm font-semibold">Food Name</label>
-                <input name="foodName" type="text" placeholder="Food name" 
+                <input name="food_name" type="text" placeholder="Food name" 
                 defaultValue={food_name} className="w-full p-2  rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
             </div>
             <div className="col-span-full sm:col-span-2">
