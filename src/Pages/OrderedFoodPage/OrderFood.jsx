@@ -35,7 +35,8 @@ const OrderFood = () => {
 
     return (
       <div>
-        <h1 className="text-center text-3xl font-semibold text-orange-600 mt-4 mb-5">Ordered food</h1>
+        <h1 className="text-center text-3xl font-semibold text-orange-600 mt-4 mb-5">Your Purchase List </h1>
+        <p className="mx-auto container text-xl font-semibold mb-6">Total Purchase : <span className="text-green-600">{orders?.length}</span></p>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 container mx-auto mb-10">
           
           {orders?.map((order) =>

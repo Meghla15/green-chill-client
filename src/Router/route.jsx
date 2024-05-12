@@ -23,7 +23,8 @@ const route = createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader:() =>fetch (`${import.meta.env.VITE_API_URL}/foods`)
             },
             {
                 path: '/allFoods',

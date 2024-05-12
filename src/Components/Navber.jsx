@@ -53,7 +53,7 @@ const Navbar = () => {
           <li><p className="font-bold">{user.displayName ||"Name not founded"}</p></li>
             <li><Link to='/myAddFood'>My Added Food Item</Link></li>
             <li><Link to='/addedFood'>Add a Food Item</Link></li>
-            <li><Link to='/orderFood'>My Ordered Food</Link></li>
+            <li><Link to='/orderFood'>My Purchase Food</Link></li>
             <li><button onClick={logout}>Logout</button></li>
           </ul>
         </div>):(<Link to="/login">
