@@ -12,6 +12,7 @@ import AddedFood from "../Pages/AddedFoods/AddedFood";
 import MyAddFood from "../Pages/MyAddFoodPage/MyAddFood";
 import OrderFood from "../Pages/OrderedFoodPage/OrderFood";
 import Update from "../Pages/UpdatePage/Update";
+import PrivetRoute from "../Components/PrivetRoute/PrivetRoute";
 
 
 const route = createBrowserRouter([
@@ -43,15 +44,15 @@ const route = createBrowserRouter([
             },
             {
                 path: '/addedFood',
-                element: <AddedFood></AddedFood>
+                element: <PrivetRoute><AddedFood></AddedFood></PrivetRoute>
             },
             {
                 path: '/myAddFood',
-                element: <MyAddFood></MyAddFood>
+                element: <PrivetRoute><MyAddFood></MyAddFood></PrivetRoute>
             },
             {
                 path: '/orderFood',
-                element: <OrderFood></OrderFood>
+                element: <PrivetRoute><OrderFood></OrderFood></PrivetRoute>
             },
             {
                 path: '/update/:id',
@@ -65,7 +66,7 @@ const route = createBrowserRouter([
             },
             {
                 path: '/purchase/:id',
-                element: <PurchasePage></PurchasePage>,
+                element: <PrivetRoute><PurchasePage></PurchasePage></PrivetRoute>,
                 loader:({params}) =>fetch (`${import.meta.env.VITE_API_URL}/food/${params.id}`)
             },
         ]

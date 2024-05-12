@@ -10,7 +10,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser} = UseAuth();
     const navigate = useNavigate();
-    const from = "/";
+    const from = location.state || '/';
 
     const {
         register,
@@ -38,7 +38,7 @@ const Register = () => {
         createUser(email, password)
         .then((result) => {
           if(result.user) {
-            navigate(from)
+            navigate(from, {replace: true})
             toast.success('Register Successfully')
           }
         })

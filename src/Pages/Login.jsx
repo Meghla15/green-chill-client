@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 const Login = () => {
 	const {signInUser} = UseAuth()
 	const navigate = useNavigate()
+	const from = location.state || '/';
 	
 	const onSubmit = async e =>{
 		e.preventDefault ()
@@ -19,7 +20,7 @@ const Login = () => {
 		try{
 		const result = await signInUser(email, password)
 		console.log(result)
-		navigate('/')
+		navigate(from, {replace: true})
 		toast.success('SignIn Successfully')
         
 	}catch(error){
