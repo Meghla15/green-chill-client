@@ -1,7 +1,7 @@
 
 const AboutUs = () => {
     return (
-        <div className="container  mx-auto flex gap-10 ">
+        <div className="container  mx-auto flex lg:flex-row flex-col lg:p-1 px-3 gap-10 ">
              <img src="https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA=" className="w-full h-full  rounded-xl "  alt="" />
           {/* <div className="flex-col gap-2">
           <div className="flex">

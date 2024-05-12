@@ -11,7 +11,7 @@ const Testimonial = () => {
             What our <span className="text-orange-600 ">clients</span> say
         </h1>
 
-        <p className="w-2/3 mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
+        <p className="lg:w-2/3 md:w-2/3  w-full mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
         Green Chilli's website is a testament to our commitment to excellence. With captivating visuals and intuitive design, it effortlessly mirrors the vibrant atmosphere and delectable offerings of our restaurant. Seamlessly browse menus, make reservations, and immerse yourself in the culinary journey we offer, all at your fingertips.
         </p>
 

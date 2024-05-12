@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const AddedFood = () => {
 	const {user} = UseAuth()
-	console.log(user)
+	// console.log(user)
 	const navigate = useNavigate()
 	const handleAddedFood = async e =>{
         e.preventDefault ()
@@ -91,7 +91,7 @@ const AddedFood = () => {
 				</div>
 			</div>
 		</fieldset>
-        <button className='w-2/3 mx-auto bg-orange-500 text-white font-semibold p-3 rounded-2xl' type="submit" value='add'>Purchase</button>
+        <button className='w-2/3 mx-auto bg-orange-500 text-white font-semibold p-3 rounded-2xl' type="submit" value='add'>Add</button>
 	</form>
 </section>
 		</div>
