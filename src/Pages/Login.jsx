@@ -3,6 +3,7 @@ import UseAuth from '../Hooks/UseAuth';
 // import toast from 'react-hot-toast';
 import SocialLogin from '../Components/SocialLogin/SocialLogin';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Login = () => {
 	const {signInUser} = UseAuth()
@@ -19,7 +20,11 @@ const Login = () => {
 
 		try{
 		const result = await signInUser(email, password)
-		console.log(result)
+		console.log(result.user)
+		const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
+			email : result?.user?.email,
+		},{withCredentials: true})
+			console.log(data)
 		navigate(from, {replace: true})
 		toast.success('SignIn Successfully')
         

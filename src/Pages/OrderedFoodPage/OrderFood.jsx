@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import UseAuth from "../../Hooks/UseAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const OrderFood = () => {
   const {user} = UseAuth()
   const [orders, setOrders] = useState()
+  const [control, setControl] = useState(false);
   
 
   useEffect(() => {
@@ -17,14 +19,31 @@ const OrderFood = () => {
     setOrders(data)
   }
      
-    console.log(orders)
+    // console.log(orders)
 
     const handleDelete = async id =>{
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      })
       try{
         const {data} = await axios.delete (
           `${import.meta.env.VITE_API_URL}/food/${id}` )
           console.log(data)
-          toast.success("Delete Successfully")
+          if (data.deletedCount > 0) {
+            setControl (!control)
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Purchase has been deleted.",
+              icon: "success"
+            });
+  
+          }
           getData()
       }
       catch(err){
@@ -37,7 +56,7 @@ const OrderFood = () => {
       <div>
         <h1 className="text-center text-3xl font-semibold text-orange-600 mt-4 mb-5">Your Purchase List </h1>
         <p className="mx-auto container text-xl font-semibold mb-6">Total Purchase : <span className="text-green-600">{orders?.length}</span></p>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 container mx-auto mb-10">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 container mx-auto mb-10 gap-3">
           
           {orders?.map((order) =>
             (<div key={order._id} className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">

@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const TopFoodSection = () => {
     const foods = useLoaderData()
-     console.log(foods)    
+    //  console.log(foods)    
     return (
         <div className='container mx-auto'>
          <h1 className='font-sens font-bold lg:text-4xl text-2xl text-center text-orange-600'>Our Top Foods</h1>
