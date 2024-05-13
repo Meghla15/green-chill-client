@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import UseAuth from '../Hooks/UseAuth';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 const Register = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -18,7 +19,7 @@ const Register = () => {
         formState: { errors },
       } = useForm();
     
-      const onSubmit = (e) => {
+      const onSubmit = async (e) => {
         e.preventDefault;
         const { email, password } = e;
         
@@ -35,17 +36,23 @@ const Register = () => {
           setError("Password should be one lowercase letter");
           return;
         }
-        createUser(email, password)
-        .then((result) => {
-          if(result.user) {
+       try{
+        const result = await  createUser(email, password)
+         
+        console.log(result.user)
+            const {data} = axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email : result ?.user?.email},{
+                withCredentials: true
+            })
+            console.log(data)
+                navigate(from, {replace : true})
             navigate(from, {replace: true})
             toast.success('Register Successfully')
           }
-        })
-        .catch((error) => {
-          toast.error('Error')
+        catch(error){
           console.log(error);
-        });
+            toast.error('Error')
+           
+        }
     };
   
     return (

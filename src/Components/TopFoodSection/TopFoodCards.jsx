@@ -6,11 +6,11 @@ const TopFoodCards = ({food}) => {
   // console.log(food)
     return (
         <div>
-             <div className="card card-compact w-96 bg-base-100 shadow-xl">
+             <div className=" w-96 bg-base-100 shadow-xl rounded-2xl">
   <figure><img className="w-full h-[15%]" src={photo} alt="Shoes" /></figure>
-  <div className="card-body space-y-3">
-    <h2 className="card-title"></h2>
-    <p className="text-center text-xl font-bold">Food Name : {food_name}</p>
+  <div className=" space-y-3">
+    
+    <p className="text-center pt-2 text-xl font-bold">Food Name : {food_name}</p>
     <div className="flex justify-around">
    <div className="flex">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-orange-600">
@@ -28,7 +28,7 @@ const TopFoodCards = ({food}) => {
     <p>{price}$</p>
     </div>
     </div>
-    <div className="card-actions justify-center">
+    <div className="card-actions pb-2 justify-center">
    <Link to={`/food/${_id}`} > <button className="rounded-2xl bg-orange-600 text-white font-semibold px-5 text-xm py-3 w-full mx-auto">Explore Now</button></Link>
     </div>
   </div>

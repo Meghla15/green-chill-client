@@ -1,17 +1,38 @@
-
+import { useLoaderData } from 'react-router-dom';
+import './Gallery.css'
 
 const Gallery = () => {
+    const foods = useLoaderData()
+    console.log(foods)
     return (
-        <div className="mx-auto container ">
-            {/* <div className="card w-[320px] h-[500px] rounded-2xl overflow-hidden relative">
-                <img className="w-full h-1/2 object-cover" src="https://www.allrecipes.com/thmb/dfGgVmzpoHhrsLjxGBa_0rIWyq0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/276304lava-cakeKim-e03d3bc55516400e8d05b8d84b524b73.jpg" alt="" />
-                <div className="w-full h-1/2 absolute top-0 right-0  hover:backdrop-blur-sm">
-                   <div className=" text-white py-4 px-16">
-                   <p className="text-2xl text-white hidden hover:visible ">hii hoye geshe</p>
-                   </div>
-                </div>
+        
+        <div  className=''>
+           <div className="hero h-48 mb-6" style={{backgroundImage: 'url(https://img.freepik.com/premium-photo/photo-closeup-shot-delicious-food_829042-88.jpg?size=626&ext=jpg&ga=GA1.1.1369675164.1715558400&semt=sph)'}}>
+  <div className="hero-overlay bg-opacity-40"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl text-green-500 font-bold">Green Chilli</h1>
+      <p className="mb-5">Home | <span className="text-orange-600">Gallery</span></p>
+      
+    </div>
+  </div>
+</div>
+            <div className="mx-auto container grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2 ">
+           {
+            foods.map((item) =>( <div key={foods._id}  className="card">
+            <img className="card-img" src={item.photo} alt="" />
 
-            </div> */}
+            <div className="card-body">
+               <div className=" card-title flex flex-col text-white">
+              <h1 className='card-title'>{item.food_name}</h1>
+              <p className='card-sub-title '>{item.description}</p>
+               </div>
+            </div>
+
+        </div>))
+           }
+            </div>
+           
           
 
         </div>
