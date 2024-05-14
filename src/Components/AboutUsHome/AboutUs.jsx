@@ -1,19 +1,16 @@
+import { useEffect } from "react";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 const AboutUs = () => {
+    useEffect (() =>{
+        Aos.init();
+
+    })
     return (
-        <div className="container  mx-auto flex lg:flex-row flex-col lg:p-1 px-3 gap-10 ">
+        <div className="container  mx-auto flex lg:flex-row flex-col lg:p-1 px-3 gap-10 " data-aos ="fade-up">
              <img src="https://media.istockphoto.com/id/1081422898/photo/pan-fried-duck.jpg?s=612x612&w=0&k=20&c=kzlrX7KJivvufQx9mLd-gMiMHR6lC2cgX009k9XO6VA=" className="w-full h-full  rounded-xl "  alt="" />
-          {/* <div className="flex-col gap-2">
-          <div className="flex">
-          
-           <img src="https://simply-delicious-food.com/wp-content/uploads/2022/02/Summer-fruit-and-cheese-platter-4.jpg" className="w-1/4 h-1/3 rounded-xl"  alt="" />
-           
-           </div>
-           <div className="flex">
-           <img src="https://simply-delicious-food.com/wp-content/uploads/2022/02/Summer-fruit-and-cheese-platter-4.jpg" className="w-1/4 h-1/3 rounded-xl"  alt="" />
-           <img src="https://simply-delicious-food.com/wp-content/uploads/2022/02/Summer-fruit-and-cheese-platter-4.jpg" className="w-1/4 h-1/3  rounded-xl"  alt="" />
-           </div>
-          </div> */}
+    
         
         <div className="space-y-2">
             <h1 className="font-bold text-2xl text-orange-600">About Us</h1>

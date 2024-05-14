@@ -21,36 +21,46 @@ const OrderFood = () => {
      
     // console.log(orders)
 
-    const handleDelete = async id =>{
+    const handleDelete = async (id) => {
       Swal.fire({
-        title: "Are you sure?",
+        title: 'Are you sure?',
         text: "You won't be able to revert this!",
-        icon: "warning",
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      })
-      try{
-        const {data} = await axios.delete (
-          `${import.meta.env.VITE_API_URL}/food/${id}` )
-          console.log(data)
-          if (data.deletedCount > 0) {
-            setControl (!control)
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Purchase has been deleted.",
-              icon: "success"
-            });
-  
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await axios.delete(
+              `${import.meta.env.VITE_API_URL}/food/${id}`,
+            )
+            const data = response.data;
+    
+            if (data.deletedCount > 0) {
+              setControl(!control)
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your Purchase has been deleted.',
+                icon: 'success',
+              })
+            } else {
+              Swal.fire({
+                title: 'Error!',
+                text: 'Failed to delete the purchase.',
+                icon: 'error',
+              })
+            }
+            getData()
+          } catch (err) {
+            console.error(err)
+            toast.error(err.message)
           }
-          getData()
-      }
-      catch(err){
-         console.log(err)
-         toast.error(err.massage)
-      }
+        }
+      })
     }
+    
 
     return (
       <div>

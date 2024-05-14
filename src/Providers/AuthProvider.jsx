@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
       const {data} = await axios(`${import.meta.env.VITE_API_URL}/logout`,{
          withCredentials: true
      })
-      console.log(data)
+      // console.log(data)
        setUser(null)
       return signOut(auth)
    }

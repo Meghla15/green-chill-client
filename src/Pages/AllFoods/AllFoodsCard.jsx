@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllFoodsCard = ({food}) => {
     const {_id, photo, category,food_name,price,quantity } = food || {}
-    console.log(food)
+    // console.log(food)
    
     return (
         <div>

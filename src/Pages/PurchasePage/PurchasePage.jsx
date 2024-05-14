@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -26,11 +26,13 @@ const PurchasePage = () => {
         const date = startDate;
 
         const purchaseFood = {name,email,food_name,price,quantity,photo,date};
+        console.log(purchaseFood)
         try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/purchase`, purchaseFood)
             console.log(data)
-            navigate('/')
             toast.success('Purchase Successfully')
+            navigate('/orderFood')
+            
            }
            catch(error){
             console.log(error)
@@ -94,7 +96,7 @@ const PurchasePage = () => {
             
         </div>
     </fieldset>
-    <button className='w-full bg-orange-500 text-white font-semibold p-3 rounded-2xl' type="submit" value='add'>Purchase</button>
+   <button className='w-full bg-orange-500 text-white font-semibold p-3 rounded-2xl' type="submit" value='add'>Purchase</button>
 </form>
 </section>
     </div>
