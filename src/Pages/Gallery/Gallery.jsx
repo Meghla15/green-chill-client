@@ -3,9 +3,12 @@ import "./Gallery.css";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import UseAuth from "../../Hooks/UseAuth";
 
 const Gallery = () => {
   const foods = useLoaderData();
+  const {user} = UseAuth()
+  console.log(user)
   // console.log(foods)
   useEffect(() => {
     Aos.init();
@@ -75,6 +78,7 @@ const Gallery = () => {
               <div className=" card-title flex flex-col text-white">
                 <h1 className="card-title">{item.food_name}</h1>
                 <p className="card-sub-title text-xs">{item.description}</p>
+                <h1 className="card-sub-title ">User Name : {user?.displayName || "Name not found"}</h1>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
               </div>
             </div>

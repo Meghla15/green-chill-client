@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import UseAuth from '../Hooks/UseAuth';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+
 const Register = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -36,23 +37,42 @@ const Register = () => {
           setError("Password should be one lowercase letter");
           return;
         }
-       try{
-        const result = await  createUser(email, password)
+
+        createUser(email, password)
+        .then(result =>{
+          const registerUser = result.user;
+          console.log(registerUser)
+          const user = {email}
+
+          axios.post(`${import.meta.env.VITE_API_URL}/jwt`,user, {withCredentials: true})
+          .then(res =>{console.log(res.data)
+            if(res.data.success){
+              navigate(from, {replace: true})
+              toast.success('Register Successfully')
+            }
+          })
+        })
+        .catch(error =>{
+          console.log(error)
+          toast.error('Error')
+        })
+      //  try{
+      //   const result = await  createUser(email, password)
          
-        console.log(result.user)
-            const {data} = axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email : result ?.user?.email},{
-                withCredentials: true
-            })
-            console.log(data)
-                navigate(from, {replace : true})
-            navigate(from, {replace: true})
-            toast.success('Register Successfully')
-          }
-        catch(error){
-          console.log(error);
-            toast.error('Error')
+      //   console.log(result.user)
+      //       // const {data} = axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email : result ?.user?.email},{
+      //       //     withCredentials: true
+      //       // })
+      //       // console.log(data)
+      //           navigate(from, {replace : true})
+      //       navigate(from, {replace: true})
+      //       toast.success('Register Successfully')
+      //     }
+      //   catch(error){
+      //     console.log(error);
+      //       toast.error('Error')
            
-        }
+      //   }
     };
   
     return (

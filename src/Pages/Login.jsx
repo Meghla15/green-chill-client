@@ -1,6 +1,5 @@
 import { Link, useNavigate} from 'react-router-dom';
 import UseAuth from '../Hooks/UseAuth';
-// import toast from 'react-hot-toast';
 import SocialLogin from '../Components/SocialLogin/SocialLogin';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -18,20 +17,25 @@ const Login = () => {
          
 		console.log({email, password})
 
-		try{
-		const result = await signInUser(email, password)
-		console.log(result.user)
-		const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
-			email : result?.user?.email,
-		},{withCredentials: true})
-			console.log(data)
-		navigate(from, {replace: true})
-		toast.success('SignIn Successfully')
-        
-	}catch(error){
-        console.log(error)
-		toast.error('Invalid email or password')
-		}
+		signInUser(email, password)
+		.then(result =>{
+			const loggedInUser = result.user;
+			console.log(loggedInUser);
+			const user = {email};
+
+			axios.post(`${import.meta.env.VITE_API_URL}/jwt`,user, {withCredentials: true})
+			.then(res =>{console.log(res.data)
+				if(res.data.success){
+					navigate(from, {replace: true})
+					toast.success('SignIn Successfully')
+				}
+			})
+		})
+		.catch(error =>{
+			console.log(error)
+			toast.error('Invalid email or password')
+		})
+
 	}
     
     return (

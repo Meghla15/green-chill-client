@@ -10,20 +10,19 @@ const SocialLogin = () => {
     const from = location?.state || '/';
 
     const handleSocialLogin =async socialProvider =>{
-       try{
-        const result = await socialProvider()
-        console.log(result.user)
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email : result ?.user?.email},{
-            withCredentials: true
-        })
-        console.log(data)
+        socialProvider()
+        .then(async result =>{
+            const googleLoggedIn = result.user;
+            console.log(googleLoggedIn)
+              const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email : result ?.user?.email},{
+            withCredentials: true})
+            console.log(data)
             navigate(from, {replace : true})
-            toast.success("Login Successfully")
-        
-       }catch(error){
-           console.log(error)
-           toast.error(error?.massage)
-       }
+            toast.success("Login Successfully") })
+            .catch(error =>{
+                console.log(error)
+                toast.error(error?.massage)
+            })
     }
     return (
         <div>
