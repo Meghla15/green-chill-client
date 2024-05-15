@@ -23,6 +23,7 @@ const Login = () => {
 			console.log(loggedInUser);
 			const user = {email};
 
+		if(user){
 			axios.post(`${import.meta.env.VITE_API_URL}/jwt`,user, {withCredentials: true})
 			.then(res =>{console.log(res.data)
 				if(res.data.success){
@@ -30,6 +31,7 @@ const Login = () => {
 					toast.success('SignIn Successfully')
 				}
 			})
+		}
 		})
 		.catch(error =>{
 			console.log(error)

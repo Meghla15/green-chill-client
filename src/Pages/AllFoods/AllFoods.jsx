@@ -1,33 +1,58 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import AllFoodsCard from "./AllFoodsCard";
 import Aos from "aos";
 import axios from "axios";
 
 
 const AllFoods = () => {
-  const foods = useLoaderData()
+  // const foods = useLoaderData()
   // console.log(foods)
   const [search, setSearch] = useState('')
-  useEffect (() =>{
+  const [foods,setFoods]=useState([])
+  // useEffect (() =>{
+  //   document.title ='Green Chilli | All Food',
+  //   Aos.init();
+  //   // const getData = async () =>{
+  //   //   const {data} = await axios(`${import.meta.env.VITE_API_URL}/foods?search=${SearchText}`)
+  //   //   console.log(data)
+      
+  //   // }
+  //   // getData()
+  // },[])
+  
+  useEffect(()=>{
     document.title ='Green Chilli | All Food',
     Aos.init();
-    const getData = async () =>{
-      const {data} = await axios(`${import.meta.env.VITE_API_URL}/foods?search=${search}`)
-      console.log(data)
-      
+    const getData =async () =>{
+        const  {data} = await axios(`${import.meta.env.VITE_API_URL}/foods`)
+        setFoods(data)
     }
     getData()
-  },[search])
-  console.log(search)
-  
+},[])
 
-  const handleSearch = e =>{
-      e.preventDefault()
-      const SearchText = e.target.search.value
-      setSearch(SearchText)
-      console.log(SearchText)
-  }
+  // const handleSearch = e =>{
+  //     e.preventDefault()
+  //     const text = e.target.search.value
+  //     const getData = async () =>{
+  //       const {data} = await axios (`${import.meta.env.VITE_API_URL}/search?search=${text}`)
+  //       console.log(data)
+  //     }
+  //     getData()
+  //     setSearch(text)
+  //     console.log(text)
+  // }
+  const handleSearch= e =>{
+    e.preventDefault()
+    const text = e.target.search.value
+    const getData =async () =>{
+                  const  {data} = await axios(`${import.meta.env.VITE_API_URL}/search?search=${text}`)
+                  setFoods(data)
+              }
+              getData()
+    setSearch(text)
+}
+console.log(search)
 
    
     
@@ -45,7 +70,7 @@ const AllFoods = () => {
 </div>
        <form className="flex item-center justify-center" onSubmit={handleSearch}> 
         <input type="text" placeholder="Search Here by Food Name" name="search" className="border p-2 rounded-xl"/>
-        <input type="submit" value='Search' className="btn rounded-xl"/>
+        <input type="submit" value='Search' className="btn bg-orange-600 text-white rounded-xl"/>
        </form>
          <div className='container mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-4 md:gap-2 gap-2 lg:mt-10 mt-6 mb-16 px-4 lg:px-0 md:px-2 ' data-aos ="fade-right">
             
