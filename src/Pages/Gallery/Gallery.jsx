@@ -1,14 +1,15 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "./Gallery.css";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import UseAuth from "../../Hooks/UseAuth";
+import ReviewModals from "./ReviewModals";
 
 const Gallery = () => {
   const foods = useLoaderData();
-  const {user} = UseAuth()
-  console.log(user)
+  const { user } = UseAuth();
+  // console.log(user);
   // console.log(foods)
   useEffect(() => {
     Aos.init();
@@ -29,12 +30,14 @@ const Gallery = () => {
               Green Chilli
             </h1>
             <p className="mb-5">
-              Home | <span className="text-orange-600">Gallery</span>
+              <Link to="/"> Home </Link>|{" "}
+              <span className="text-orange-600">Gallery</span>
             </p>
           </div>
         </div>
       </div>
-      <button
+
+      {/* <button
         className="btn mt-2 text-center mx-auto w-1/3 mb-3"
         onClick={() => document.getElementById("my_modal_5").showModal()}
       >
@@ -60,14 +63,18 @@ const Gallery = () => {
           </form>
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
+             
               <button className="btn">Close</button>
             </form>
           </div>
         </div>
-      </dialog>
+      </dialog> */}
+
+      {/* Modal for add reviews */}
+      <ReviewModals></ReviewModals>
+
       <div
-        className="mx-auto container grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2 "
+        className="mx-auto  mt-5 container grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-2 "
         data-aos="fade-right"
       >
         {foods.map((item) => (
@@ -78,7 +85,9 @@ const Gallery = () => {
               <div className=" card-title flex flex-col text-white">
                 <h1 className="card-title">{item.food_name}</h1>
                 <p className="card-sub-title text-xs">{item.description}</p>
-                <h1 className="card-sub-title ">User Name : {user?.displayName || "Name not found"}</h1>
+                <h1 className="card-sub-title ">
+                  User Name : {user?.displayName || "Name not found"}
+                </h1>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
               </div>
             </div>
